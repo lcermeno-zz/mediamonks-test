@@ -32,6 +32,10 @@ dependencies {
     implementation "androidx.core:core-ktx:$rootProject.ext.coreKtxVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
 
+    // retrofit
+
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+
     // testing
 
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
