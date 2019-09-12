@@ -1,4 +1,4 @@
-package com.qiubo.mediamonks.model.service
+package com.qiubo.mediamonks.api.service
 
 import retrofit2.http.GET
 import retrofit2.http.Path

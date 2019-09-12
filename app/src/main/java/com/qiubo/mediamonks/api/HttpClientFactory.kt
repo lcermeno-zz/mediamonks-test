@@ -1,4 +1,4 @@
-package com.qiubo.mediamonks.model
+package com.qiubo.mediamonks.api
 
 import com.qiubo.mediamonks.BuildConfig
 import retrofit2.converter.gson.GsonConverterFactory
