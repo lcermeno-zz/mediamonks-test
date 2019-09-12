@@ -3,6 +3,7 @@ package com.qiubo.mediamonks.model
 import com.qiubo.mediamonks.BuildConfig
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 
 
 object HttpClientFactory {
@@ -11,6 +12,7 @@ object HttpClientFactory {
         Retrofit.Builder()
             .baseUrl(BuildConfig.API_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .build()
     }
 
