@@ -10,6 +10,6 @@ interface IMediaService {
     @GET("albums/")
     fun getAlbums(): Observable<List<Album>>
 
-    @GET("albums/{albumId}/photos/{photoId}")
-    fun getPhotos(@Path("albumId") albumId: String, @Path("photoId") photoId: String = ""): Observable<List<Photo>>
+    @GET("albums/{albumId}/photos")
+    fun getPhotos(@Path("albumId") albumId: String): Observable<List<Photo>>
 }

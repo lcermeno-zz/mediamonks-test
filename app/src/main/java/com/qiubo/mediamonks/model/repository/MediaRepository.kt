@@ -11,7 +11,7 @@ class MediaRepository : IMediaRepository {
         return HttpClientFactory.getService(IMediaService::class.java).getAlbums()
     }
 
-    override fun getPhotos(albumId: String, photoId: String): Observable<List<Photo>> {
-        return HttpClientFactory.getService(IMediaService::class.java).getPhotos(albumId, photoId)
+    override fun getPhotos(albumId: String): Observable<List<Photo>> {
+        return HttpClientFactory.getService(IMediaService::class.java).getPhotos(albumId)
     }
 }
