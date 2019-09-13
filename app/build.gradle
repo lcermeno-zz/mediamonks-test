@@ -27,6 +27,10 @@ android {
             buildConfigField("String", "API_URL", '"https://jsonplaceholder.typicode.com/"')
         }
     }
+
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {
@@ -40,6 +44,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
     implementation "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerViewVersion"
     implementation "androidx.cardview:cardview:$rootProject.ext.cardViewVersion"
+    implementation "com.google.android.material:material:$rootProject.ext.materialVersion"
 
     // retrofit
 
