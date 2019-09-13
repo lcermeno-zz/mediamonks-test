@@ -7,7 +7,8 @@ import com.qiubo.mediamonks.R
 import com.qiubo.mediamonks.entities.Album
 import com.qiubo.mediamonks.ui.viewholders.AlbumViewHolder
 
-class AlbumAdapter(private val mItems: List<Album>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AlbumAdapter(private val mItems: MutableList<Album>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int = mItems.size
 
@@ -20,5 +21,11 @@ class AlbumAdapter(private val mItems: List<Album>) : RecyclerView.Adapter<Recyc
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val viewHolder = holder as AlbumViewHolder
         viewHolder.setValues(mItems[position])
+    }
+
+    fun setItems(items: List<Album>) {
+        mItems.clear()
+        mItems.addAll(items)
+        notifyDataSetChanged()
     }
 }
