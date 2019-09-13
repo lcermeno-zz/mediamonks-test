@@ -38,6 +38,8 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompatVersion"
     implementation "androidx.core:core-ktx:$rootProject.ext.coreKtxVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerViewVersion"
+    implementation "androidx.cardview:cardview:$rootProject.ext.cardViewVersion"
 
     // retrofit
 
