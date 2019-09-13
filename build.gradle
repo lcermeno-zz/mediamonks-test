@@ -19,7 +19,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        mavenCentral()
     }
 }
 
@@ -46,6 +46,10 @@ ext {
 
     rxJavaVersion = '2.1.12'
     rxAndroidVersion = '2.1.1'
+
+    // glide
+
+    glideVersion = '4.9.0'
 
     // Testing
 
