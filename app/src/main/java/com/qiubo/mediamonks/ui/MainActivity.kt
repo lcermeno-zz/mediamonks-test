@@ -1,20 +1,23 @@
 package com.qiubo.mediamonks.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.qiubo.mediamonks.R
 import com.qiubo.mediamonks.entities.Album
+import com.qiubo.mediamonks.misc.Constants
 import com.qiubo.mediamonks.model.domain.GetMediaUseCase
 import com.qiubo.mediamonks.presenter.MainPresenter
 import com.qiubo.mediamonks.ui.adapters.AlbumAdapter
 import com.qiubo.mediamonks.view.IMainView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), IMainView {
+class MainActivity : AppCompatActivity(), IMainView, AlbumAdapter.IOnClickListener {
+
     private val mPresenter by lazy { MainPresenter(this, GetMediaUseCase()) }
-    private val mAdapter by lazy { AlbumAdapter(mutableListOf()) }
+    private val mAdapter by lazy { AlbumAdapter(mutableListOf(), this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +38,13 @@ class MainActivity : AppCompatActivity(), IMainView {
 
     override fun onError(message: String) {
         Toast.makeText(this, "something went wrong", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onClickItem(item: Album) {
+        val intent = Intent(this, AlbumDetailActivity::class.java)
+        intent.putExtra(Constants.ITEM_KEY, item)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
     }
 
 }
