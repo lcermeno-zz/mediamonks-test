@@ -2,16 +2,19 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/albumRoot"
     android:layout_width="match_parent"
     android:layout_height="@dimen/cardview_album_height"
-    android:layout_margin="@dimen/half_standard_margin">
+    android:layout_margin="@dimen/half_standard_margin"
+    android:clickable="true"
+    android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/album_header"
+            android:id="@+id/albumHeader"
             android:layout_width="0dp"
             android:layout_height="@dimen/cardview_album_header_height"
             android:scaleType="centerCrop"
@@ -21,7 +24,7 @@
             app:srcCompat="@drawable/album_photo" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/album_title"
+            android:id="@+id/albumTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/standard_margin"
@@ -30,7 +33,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/album_header"
+            app:layout_constraintTop_toBottomOf="@id/albumHeader"
             tools:text="Vacaciones en Bora Bora" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
