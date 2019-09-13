@@ -23,11 +23,14 @@ class MainActivity : AppCompatActivity(), IMainView {
         mainRecycler.layoutManager = GridLayoutManager(this, 2)
         mainRecycler.adapter = mAdapter
 
+        mainRefreshLayout.setOnRefreshListener { mPresenter.getAllAlbum() }
+
         mPresenter.getAllAlbum()
     }
 
     override fun onGetItems(items: List<Album>) {
         mAdapter.setItems(items)
+        mainRefreshLayout.isRefreshing = false
     }
 
     override fun onError(message: String) {
