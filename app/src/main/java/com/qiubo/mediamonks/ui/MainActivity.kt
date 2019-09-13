@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), IMainView, AlbumAdapter.IOnClickListen
     }
 
     override fun onError(message: String) {
-        Toast.makeText(this, "something went wrong", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     override fun onClickItem(item: Album) {
