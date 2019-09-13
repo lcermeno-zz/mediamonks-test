@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="appbar_height">250dp</dimen>
+    <dimen name="cardview_album_height">200dp</dimen>
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="half_standard_margin">8dp</dimen>
+    <dimen name="cardview_album_header_height">100dp</dimen>
+    <dimen name="font_big_size">18sp</dimen>
+</resources>
