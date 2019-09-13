@@ -44,6 +44,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
     implementation "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerViewVersion"
     implementation "androidx.cardview:cardview:$rootProject.ext.cardViewVersion"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.ext.legacySupportVersion"
     implementation "com.google.android.material:material:$rootProject.ext.materialVersion"
 
     // retrofit
@@ -61,6 +62,10 @@ dependencies {
 
     implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glideVersion"
+
+    // photoview
+
+    implementation "com.github.chrisbanes:PhotoView:$rootProject.ext.photoViewVersion"
 
     // testing
 

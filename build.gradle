@@ -20,6 +20,7 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -37,6 +38,11 @@ ext {
     recyclerViewVersion = '1.0.0'
     cardViewVersion = '1.0.0'
     materialVersion = '1.0.0'
+    legacySupportVersion = '1.0.0'
+
+    // photoview
+
+    photoViewVersion = '2.3.0'
 
     // retrofit
 
