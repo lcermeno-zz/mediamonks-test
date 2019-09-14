@@ -14,7 +14,6 @@
         <activity
             android:name=".ui.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_fullscreen"
             android:theme="@style/FullscreenTheme"></activity>
         <activity android:name=".ui.AlbumDetailActivity" />
         <activity android:name=".ui.MainActivity">
