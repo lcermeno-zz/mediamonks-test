@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.qiubo.mediamonks.R
 import com.qiubo.mediamonks.entities.Album
 import com.qiubo.mediamonks.misc.Constants
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), IMainView, AlbumAdapter.IOnClickListener {
 
+
     private val mPresenter by lazy { MainPresenter(this, GetMediaUseCase()) }
     private val mAdapter by lazy { AlbumAdapter(mutableListOf(), this) }
 
@@ -26,6 +28,12 @@ class MainActivity : AppCompatActivity(), IMainView, AlbumAdapter.IOnClickListen
         mainRecycler.layoutManager = GridLayoutManager(this, 2)
         mainRecycler.adapter = mAdapter
 
+        mainRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                mPresenter.loadMoreItems(!mainRecycler.canScrollVertically(1))
+            }
+        })
+
         mainRefreshLayout.setOnRefreshListener { mPresenter.getAllAlbum() }
 
         mPresenter.getAllAlbum()
@@ -34,6 +42,10 @@ class MainActivity : AppCompatActivity(), IMainView, AlbumAdapter.IOnClickListen
     override fun onGetItems(items: List<Album>) {
         mAdapter.setItems(items)
         mainRefreshLayout.isRefreshing = false
+    }
+
+    override fun onLoadMore(items: MutableList<Album>) {
+        mAdapter.loadMore(items)
     }
 
     override fun onError(message: String) {

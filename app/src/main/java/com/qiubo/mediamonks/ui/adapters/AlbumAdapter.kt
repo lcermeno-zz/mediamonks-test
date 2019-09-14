@@ -35,4 +35,10 @@ class AlbumAdapter(
         mItems.addAll(items)
         notifyDataSetChanged()
     }
+
+    fun loadMore(items: MutableList<Album>) {
+        val start = mItems.size - 1
+        mItems.addAll(items)
+        notifyItemRangeChanged(start, mItems.size)
+    }
 }
