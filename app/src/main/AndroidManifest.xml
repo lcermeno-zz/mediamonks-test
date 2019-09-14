@@ -14,9 +14,16 @@
         <activity
             android:name=".ui.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme"></activity>
-        <activity android:name=".ui.AlbumDetailActivity" />
-        <activity android:name=".ui.MainActivity">
+        <activity
+            android:name=".ui.AlbumDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
