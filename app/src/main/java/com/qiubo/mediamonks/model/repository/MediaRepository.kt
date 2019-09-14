@@ -7,11 +7,12 @@ import com.qiubo.mediamonks.entities.Photo
 import io.reactivex.Observable
 
 class MediaRepository : IMediaRepository {
-    override fun getAlbums(): Observable<List<Album>> {
-        return HttpClientFactory.getService(IMediaService::class.java).getAlbums()
+    override fun getAlbums(limit: Int, page: Int): Observable<List<Album>> {
+        return HttpClientFactory.getService(IMediaService::class.java).getAlbums(limit, page)
     }
 
-    override fun getPhotos(albumId: String): Observable<List<Photo>> {
-        return HttpClientFactory.getService(IMediaService::class.java).getPhotos(albumId)
+    override fun getPhotos(albumId: String, limit: Int, page: Int): Observable<List<Photo>> {
+        return HttpClientFactory.getService(IMediaService::class.java)
+            .getPhotos(albumId, limit, page)
     }
 }
