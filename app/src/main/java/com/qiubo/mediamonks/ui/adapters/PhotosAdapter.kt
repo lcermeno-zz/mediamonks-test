@@ -9,8 +9,10 @@ import com.qiubo.mediamonks.R
 import com.qiubo.mediamonks.entities.Photo
 import com.qiubo.mediamonks.ui.viewholders.PhotoViewHolder
 
-class PhotosAdapter( private val mItems: MutableList<Photo>,
-                     private val mListener: IOnClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PhotosAdapter(
+    private val mItems: MutableList<Photo>,
+    private val mListener: IOnClickListener
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface IOnClickListener {
         fun onClickItem(
@@ -36,5 +38,11 @@ class PhotosAdapter( private val mItems: MutableList<Photo>,
         mItems.clear()
         mItems.addAll(items)
         notifyDataSetChanged()
+    }
+
+    fun loadMore(items: MutableList<Photo>) {
+        val start = mItems.size - 1
+        mItems.addAll(items)
+        notifyItemRangeChanged(start, mItems.size)
     }
 }

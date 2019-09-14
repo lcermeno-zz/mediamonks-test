@@ -4,4 +4,5 @@ import com.qiubo.mediamonks.entities.Photo
 
 interface IAlbumDetailView: IOnError {
     fun onGetItems(items: List<Photo>)
+    fun onLoadMore(items: MutableList<Photo>)
 }

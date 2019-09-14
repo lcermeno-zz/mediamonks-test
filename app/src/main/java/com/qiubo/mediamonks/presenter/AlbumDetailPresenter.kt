@@ -17,13 +17,34 @@ class AlbumDetailPresenter(
 ) :
     IAlbumDetailPresenter {
 
+
+    private var mPage = 1
+    private var mLoading = false
+
     companion object {
         private const val TAG = "AlbumDetailPresenter"
     }
 
-    @SuppressLint("CheckResult")
     override fun getPhotos() {
-        mGetMediaUseCase.getPhotos(mAlbum.id)
+        if (!mLoading) {
+            mPage = 1
+            val list = mutableListOf<Photo>()
+            requestData(list) { mView?.onGetItems(list) }
+        }
+    }
+
+    override fun loadMoreItems(isBottom: Boolean) {
+        if (!mLoading) {
+            mPage++
+            val list = mutableListOf<Photo>()
+            requestData(list) { mView?.onLoadMore(list) }
+        }
+    }
+
+    @SuppressLint("CheckResult")
+    private fun requestData(list: MutableList<Photo>, function: (List<Photo>) -> Unit) {
+        mLoading = true
+        mGetMediaUseCase.getPhotos(mAlbum.id, mPage)
             .map {
 
                 var row = 0
@@ -44,7 +65,9 @@ class AlbumDetailPresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 Log.d(TAG, "Received album list with size: ${it.size}")
-                mView?.onGetItems(it)
+                list.addAll(it)
+                function(list)
+                mLoading = false
             }, {
                 Log.e(TAG, it.message)
                 it.printStackTrace()

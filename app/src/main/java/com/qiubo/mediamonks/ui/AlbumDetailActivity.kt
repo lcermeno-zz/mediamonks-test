@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.qiubo.mediamonks.R
 import com.qiubo.mediamonks.entities.Album
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.activity_album_detail.*
 
 class AlbumDetailActivity : AppCompatActivity(), IAlbumDetailView, PhotosAdapter.IOnClickListener {
 
+
     private val mAdapter by lazy { PhotosAdapter(mutableListOf(), this) }
     private lateinit var mPresenter: IAlbumDetailPresenter
 
@@ -33,6 +35,12 @@ class AlbumDetailActivity : AppCompatActivity(), IAlbumDetailView, PhotosAdapter
         albumDetailRecycler.layoutManager =
             StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         albumDetailRecycler.adapter = mAdapter
+
+        albumDetailRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                mPresenter.loadMoreItems(!albumDetailRecycler.canScrollVertically(1))
+            }
+        })
 
         albumDetailRefresh.setOnRefreshListener { mPresenter.getPhotos() }
 
@@ -67,5 +75,9 @@ class AlbumDetailActivity : AppCompatActivity(), IAlbumDetailView, PhotosAdapter
     override fun onGetItems(items: List<Photo>) {
         mAdapter.setItems(items)
         albumDetailRefresh.isRefreshing = false
+    }
+
+    override fun onLoadMore(items: MutableList<Photo>) {
+        mAdapter.loadMore(items)
     }
 }
