@@ -48,6 +48,7 @@ class MainPresenter(private var mView: IMainView?, private val mGetMediaUseCase:
             }, {
                 Log.e(TAG, it.message)
                 it.printStackTrace()
+                it.message?.let { message -> mView?.onError(message) }
             })
     }
 }

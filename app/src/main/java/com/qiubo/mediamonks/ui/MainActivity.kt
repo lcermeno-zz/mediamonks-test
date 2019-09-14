@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity(), IMainView, AlbumAdapter.IOnClickListen
 
         mainRefreshLayout.setOnRefreshListener { mPresenter.getAllAlbum() }
 
+        mainRefreshLayout.isRefreshing = true
         mPresenter.getAllAlbum()
     }
 
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity(), IMainView, AlbumAdapter.IOnClickListen
     }
 
     override fun onError(message: String) {
+        mainRefreshLayout.isRefreshing = false
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 

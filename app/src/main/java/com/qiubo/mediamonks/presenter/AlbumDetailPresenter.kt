@@ -71,6 +71,7 @@ class AlbumDetailPresenter(
             }, {
                 Log.e(TAG, it.message)
                 it.printStackTrace()
+                it.message?.let { message -> mView?.onError(message) }
             })
     }
 

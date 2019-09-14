@@ -48,11 +48,13 @@ class AlbumDetailActivity : AppCompatActivity(), IAlbumDetailView, PhotosAdapter
 
         val width = ScreenHelper.getScreenRealWidth(this)
 
+        albumDetailRefresh.isRefreshing = true
         mPresenter = AlbumDetailPresenter(this, GetMediaUseCase(), album, width)
         mPresenter.getPhotos()
     }
 
     override fun onError(message: String) {
+        albumDetailRefresh.isRefreshing = false
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
