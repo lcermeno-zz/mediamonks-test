@@ -1,6 +1,7 @@
 package com.qiubo.mediamonks.misc
 
 object Constants {
+    const val INDEX_NOT_FOUND = -1
     const val ITEM_KEY = "item"
     const val LIMIT_KEY = "_limit"
     const val PAGE_KEY = "_page"
